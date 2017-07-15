@@ -349,7 +349,7 @@ def load(app):
                     session['username'] = team.name
                     session['id'] = team.id
                     session['admin'] = team.admin
-                    session['nonce'] = utils.sha512(os.urandom(10))
+                    session['nonce'] = utils.sha512(urandom(10))
 
                     if (utils.can_send_mail() and
                         utils.get_config('verify_emails')):
