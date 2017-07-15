@@ -47,7 +47,7 @@ def add_to_invitation_list(csv_file):
                 errors.append('Invalid number of fields on line %d' % line_no)
             continue
 
-        name = team[0]
+        name = team[0].decode('utf-8')
         email = team[1]
 
         name_len = len(name) == 0
