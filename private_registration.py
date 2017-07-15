@@ -251,7 +251,7 @@ def load(app):
                     url_for('auth.register', _external=True),
                     token_text
                 )
-            utils.sendmail(team.email, text)
+                utils.sendmail(team.email, text)
             return '1'
         else:
             return '0'
