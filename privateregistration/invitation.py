@@ -12,7 +12,11 @@ from CTFd.models import db, Teams
 
 
 def add_to_invitation_list(csv_file):
-    team_list = csv_file.read().splitlines()
+    if sys.version_info[0] >= 3:  # We need to support Python 3 bytes
+        team_list = str(csv_file.read(), 'utf-8').splitlines()
+    else:
+        team_list = csv_file.read().splitlines()
+
     team_list = list(csv.reader(team_list))
     messages = []
     errors = []
@@ -28,8 +32,11 @@ def add_to_invitation_list(csv_file):
                 errors.append('Invalid number of fields on line %d' % line_no)
             continue
 
-        name = team[0].decode('utf-8')
+        name = team[0]
         email = team[1]
+
+        if sys.version_info[0] < 3:  # Support unicode for Python 2
+            name = name.decode('utf-8')
 
         name_len = len(name) == 0
         valid_email = re.match(
