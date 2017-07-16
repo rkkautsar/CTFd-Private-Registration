@@ -1,6 +1,8 @@
 # CTFd-Private-Registration
 Plugin for private registration feature in CTFd so only invited teams (identified by unique token or email) can register
 
+![CTFd Private Registration.](http://i.imgur.com/xSxlGFu.png)
+
 ## Installation
 
 Clone this repository to the [CTFd/plugins](https://github.com/isislab/CTFd/tree/master/CTFd/plugins) folder.
