@@ -1,1 +1,1 @@
-from .private_registration import load
+from .privateregistration import load
