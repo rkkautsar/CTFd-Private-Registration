@@ -297,6 +297,15 @@ input[type="checkbox"] { margin: 0px !important; position: relative; top: 5px; }
             });
         });
 
+        function escapeHTML(html) {
+            return html
+                .replace(/&/g, '&amp;')
+                .replace(/>/g, '&gt;')
+                .replace(/</g, '&lt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&apos;');
+        }
+
         function load_invited_teams(){
             $('#teamsboard > tbody').empty();
             $.get(script_root + "/admin/invited_teams/", function (data) {
@@ -310,7 +319,7 @@ input[type="checkbox"] { margin: 0px !important; position: relative; top: 5px; }
                     var token = invited_teams[i].token;
                     var registered = invited_teams[i].registered;
                     var td_team_id = '<td class="team-id" value="{0}">{0}</td>'.format(id);
-                    var td_team_name = '<td class="team-name" value="{0}">{0}</td>'.format(name);
+                    var td_team_name = '<td class="team-name" value="{0}">{0}</td>'.format(escapeHTML(name));
                     var td_team_email = '<td class="team-email" value="{0}">{0}</td>'.format(email);
                     var td_team_token = '<td class="team-token" value="{0}">{0}</td>'.format(token);
                     var td_team_registered = '<td class="team-registered"><input type="checkbox" {0} disabled></td>'.format(registered ? 'checked' : '');
